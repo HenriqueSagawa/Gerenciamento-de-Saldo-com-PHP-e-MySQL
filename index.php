@@ -15,8 +15,11 @@
 <body class="p-2">
     <h1><?php  echo "Olá " . $_SESSION['nome'];?> </h1>
 
-    <p><?php echo "Seu saldo é: R$" . $_SESSION['saldo'];?></p>
+    <h4><?php echo "Seu saldo é: R$" . $_SESSION['saldo'];?></h4>
+    <p><?php echo "Seu id de usuário é: " . $_SESSION['id'] . "<br>" . "Ele é usado para efetuar pagamentos." ?></p>
 
     <a href="logout.php" class="btn btn-primary">Sair</a>
+
+    <a href="transacao.php" class="btn btn-secondary">Pagar</a>
 </body>
 </html>
