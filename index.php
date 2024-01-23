@@ -13,6 +13,11 @@
     <title>Página Inicial</title>
 </head>
 <body class="p-2">
+<?php
+    $imagemID = $_SESSION['id'];
+    echo '<img src="mostrar_imagem.php?id=' . $imagemID . '" style="width: 5rem; height: fit-content;">';
+    ?>
+
     <h1><?php  echo "Olá " . $_SESSION['nome'];?> </h1>
 
     <h4><?php echo "Seu saldo é: R$" . $_SESSION['saldo'];?></h4>
@@ -21,5 +26,11 @@
     <a href="logout.php" class="btn btn-primary">Sair</a>
 
     <a href="transacao.php" class="btn btn-secondary">Pagar</a>
+
+    <form action="alterar_foto.php" method="post" enctype="multipart/form-data" class="mt-5">
+        <h1>Alterar foto de perfil</h1>
+        <input type="file" name='imagem' accept="image/*" required>
+        <button type="submit" class='btn btn-primary'>Alterar</button>
+    </form>
 </body>
 </html>

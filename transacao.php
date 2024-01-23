@@ -17,17 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['valorEnviado'] = $valor;
         $_SESSION['pessoaEnviada'] = $pessoa;
 
-        $query = "SELECT nome FROM usuarios WHERE id = $pessoa";
+        $query = "SELECT nome, foto FROM usuarios WHERE id = $pessoa";
         $resultado = $conexao->query($query);
 
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $nome = $row['nome'];
+                $fotoConteudo = $row['foto'];
                 echo "
                     <form action='' method='post' class='position-absolute alert alert-danger rounded-bottom fixed-top col-md-6 mx-auto' style=''>
                         <h3>Deseja enviar R$$valor para $nome</h3>
-                        <button type='submit'name='enviar' class='btn btn-success'>Enviar</button>
-                        <a href='transacao.php' class='btn btn-danger'>Não</a>
+                        <img src='mostrar_imagem.php?id=" . $pessoa . "' style='width: 5rem; height: fit-content;'> <br>
+                        <button type='submit'name='enviar' class='btn btn-success mt-1'>Enviar</button>
+                        <a href='transacao.php' class='btn btn-danger mt-1'>Não</a>
                     </form>
                     ";
             }
